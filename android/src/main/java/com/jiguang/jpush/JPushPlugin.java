@@ -120,15 +120,16 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     private void setWakeEnable(MethodCall call, Result result) {
-        HashMap<String, Object> map = call.arguments();
-        if (map == null) {
-            return;
-        }
-        Boolean enable = (Boolean) map.get("enable");
-        if (enable == null) {
-            enable = false;
-        }
-        JCoreInterface.setWakeEnable(context,enable);
+        //GP版本不支持
+//        HashMap<String, Object> map = call.arguments();
+//        if (map == null) {
+//            return;
+//        }
+//        Boolean enable = (Boolean) map.get("enable");
+//        if (enable == null) {
+//            enable = false;
+//        }
+//        JCoreInterface.setWakeEnable(context,enable);
     }
 
     // 主线程再返回数据
@@ -343,31 +344,33 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
     public void setBadge(MethodCall call, Result result) {
         Log.d(TAG, "setBadge: " + call.arguments);
 
-        HashMap<String, Object> map = call.arguments();
-        Object numObject = map.get("badge");
-        if (numObject != null) {
-            int num = (int) numObject;
-            JPushInterface.setBadgeNumber(context, num);
-            result.success(true);
-        }
+        //GP版本不支持
+//        HashMap<String, Object> map = call.arguments();
+//        Object numObject = map.get("badge");
+//        if (numObject != null) {
+//            int num = (int) numObject;
+//            JPushInterface.setBadgeNumber(context, num);
+//            result.success(true);
+//        }
     }
 
     /// 检查当前应用的通知开关是否开启
     private void isNotificationEnabled(MethodCall call, Result result) {
         Log.d(TAG, "isNotificationEnabled: ");
-        int isEnabled = JPushInterface.isNotificationEnabled(context);
-        //1表示开启，0表示关闭，-1表示检测失败
-        HashMap<String, Object> map = new HashMap();
-        map.put("isEnabled", isEnabled == 1 ? true : false);
-
-        runMainThread(map, result, null);
+        //GP版本不支持
+//        int isEnabled = JPushInterface.isNotificationEnabled(context);
+//        //1表示开启，0表示关闭，-1表示检测失败
+//        HashMap<String, Object> map = new HashMap();
+//        map.put("isEnabled", isEnabled == 1 ? true : false);
+//
+//        runMainThread(map, result, null);
     }
 
     private void openSettingsForNotification(MethodCall call, Result result) {
         Log.d(TAG, "openSettingsForNotification: ");
 
-        JPushInterface.goToAppNotificationSettings(context);
-
+        //GP版本不支持
+//        JPushInterface.goToAppNotificationSettings(context);
     }
 
     /**
